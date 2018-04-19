@@ -1,30 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package banco;
 
-/**
- *
- * @author Rafael.Soares
- */
 public class Banco {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
-        Correntista corre1;
-        corre1 = new Correntista();
-        corre1.nome = "Maria";
-        corre1.tipo = 1;
-        
-        Correntista corre2;
-        corre2 = new Correntista();
-        corre2.nome = "Rosa";
-        corre2.tipo = 1;
+        Correntista corre1 = FabricaCorrentista.novo("Maria", 1);        
+        Correntista corre2 = FabricaCorrentista.novo("Rosa", 1);
         
         Conta ct1; 
         ct1 = new Conta();
