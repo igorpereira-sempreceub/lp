@@ -4,51 +4,38 @@ public class Banco {
 
     public static void main(String[] args) {
         
-        Correntista corre1 = FabricaCorrentista.novo("Maria", 1);        
-        Correntista corre2 = FabricaCorrentista.novo("Rosa", 1);
+        Correntista corre1 = FabricaCorrentista.novo("Maria", 1, 1000, 2000);        
+        Correntista corre2 = FabricaCorrentista.novo("Rosa", 1, 500, 1000);
         
-        Conta ct1; 
-        ct1 = new Conta();
-        ct1.saldo = 1000;
+        Transacao tx1 = new Transacao();
         
-        corre1.conta1 = ct1;
-        corre1.conta1.saldo = 2000;
+        tx1.tipo = 1; //debito
+        tx1.valor = corre1.conta1.saldo;
+        corre1.conta1.aplicarTransacao(tx1);
         
-        
-        
-        Conta ct2;
-        ct2 = new Conta();
-        ct2.saldo = 500;
-        corre1.conta2 = ct2;
+        tx1.tipo = 2;
+        corre2.conta2.aplicarTransacao(tx1);
         
         
+        Transacao tx2 = new Transacao();
         
-        System.out.println("Saldo da maria:" + corre1.saldoTotal());
+        tx2.tipo = 1;
+        tx2.valor = corre2.conta1.saldo;
+        corre2.conta1.aplicarTransacao(tx2);
         
-        Conta ct3;
-        ct3 = new Conta();
-        ct3.saldo = 100;
-        corre2.conta1 = ct3;
+        tx2.tipo = 2;
+        corre1.conta2.aplicarTransacao(tx2);
+
+        System.out.println("Saldo da Conta 1 - Maria:" + corre1.conta1.saldo);
+        System.out.println("Saldo da Conta 2 - Maria:" + corre1.conta2.saldo);
+        System.out.println("Saldo total - Maria: " + corre1.saldoTotal());
         
+        System.out.println("");
         
-        Conta ct4;
-        ct4 = new Conta();
-        ct4.saldo = 3100;
-        corre2.conta2 = ct4;
-        ct4.donoDaConta = corre2;
-        
-        
-        System.out.println("Saldo da ROSA:" + corre2.saldoTotal());
-        
-        
-        Transacao trans = new Transacao();
-        trans.tipo = 0;
-        trans.valor = 400;
-        
-        corre2.conta1.aplicarTransacao(trans);
-            
+        System.out.println("Saldo da Conta 1 - ROSA:" + corre2.conta1.saldo);
+        System.out.println("Saldo da Conta 2 - ROSA:" + corre2.conta2.saldo);
+        System.out.println("Saldo total - Rosa: " + corre2.saldoTotal());
         
         
-    }
-    
+    }    
 }
